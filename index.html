@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ICEMAN TV</title>
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        background: #0a0a0a;
+        color: #fff;
+        font-family: 'Orbitron', sans-serif;
+        text-align: center;
+        overflow: hidden; /* Prevents scrolling */
+      }
+
+      h1 {
+        margin-top: 2rem;
+        font-size: clamp(2.5rem, 6vw, 5rem);
+        background: linear-gradient(90deg, #00c6ff, #ffffff, #00c6ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-transform: uppercase;
+        font-weight: 900;
+        text-shadow: 0 0 15px #00c6ff, 0 0 30px #66ffff;
+        letter-spacing: 4px;
+      }
+
+      h2 {
+        font-size: clamp(1.2rem, 3vw, 2rem);
+        margin-top: 0.5rem;
+        color: #aaa;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
+
+      .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      nav {
+        margin-top: 3rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      a, button {
+        text-decoration: none;
+        font-weight: bold;
+        font-size: clamp(1.2rem, 5vw, 2rem);
+        color: #fff;
+        padding: 1rem 2rem;
+        border: 3px solid #00c6ff;
+        border-radius: 12px;
+        transition: 0.3s ease;
+        background: rgba(0, 198, 255, 0.1);
+        text-shadow: 0 0 10px #00c6ff, 0 0 20px #00faff;
+        cursor: pointer;
+      }
+      a:hover, button:hover {
+        background: #00c6ff;
+        color: #000;
+        box-shadow: 0 0 30px #00faff;
+      }
+
+      input {
+        padding: 0.8rem;
+        font-size: 1.2rem;
+        border-radius: 8px;
+        border: 2px solid #00c6ff;
+        outline: none;
+        margin: 0.5rem;
+        background: #111;
+        color: #fff;
+      }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800;900&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <!-- Login Screen -->
+    <div id="login" class="container">
+      <h1>Login</h1>
+      <input type="text" id="username" placeholder="Username" />
+      <input type="password" id="password" placeholder="Password" />
+      <button onclick="checkLogin()">Enter</button>
+      <p id="error" style="color:red; margin-top:1rem;"></p>
+    </div>
+
+    <script>
+      // Function to load main site
+      function loadSite() {
+        document.body.innerHTML = `
+          <div class="container">
+            <h1>ICEMAN TV</h1>
+            <h2>Where the fights never stop</h2>
+            <nav>
+              <a href="https://www.streameast.ga/" target="_blank" rel="nofollow noopener">WATCH LIVE SPORTS AND MMA</a>
+              <a href="https://www.espn.com/mma/schedule/_/league/ufc" target="_blank" rel="nofollow noopener">UFC Fight Schedule</a>
+              <a href="https://fmhy.pages.dev/videopiracyguide#live-sports" target="_blank" rel="nofollow noopener">MORE LIVE TV</a>
+            </nav>
+          </div>
+        `;
+      }
+
+      // Check login
+      function checkLogin() {
+        const user = document.getElementById("username").value;
+        const pass = document.getElementById("password").value;
+
+        if (user === "ICEMAN" && pass === "TV541$2") {
+          localStorage.setItem("loggedIn", "true"); // Remember login
+          loadSite();
+        } else {
+          document.getElementById("error").innerText = "❌ Wrong username or password!";
+        }
+      }
+
+      // Auto-login if already logged in
+      if (localStorage.getItem("loggedIn") === "true") {
+        loadSite();
+      }
+    </script>
+  </body>
+</html>
